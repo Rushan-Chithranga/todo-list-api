@@ -16,13 +16,10 @@ A simple to-do list API built using Node.js, Express.js, MySQL, and JWT for auth
 - **JWT** for authentication
 - **Bcryptjs** for password hashing
 
-
 ### RoadMap Project Url
 
 - [Road-Map](https://roadmap.sh/projects/todo-list-api)
 - [Road-Map-submit-link](https://roadmap.sh/projects/todo-list-api/solutions?u=678382cc70129741a834f06c)
-
-
 
 ## Installation
 
@@ -32,6 +29,7 @@ A simple to-do list API built using Node.js, Express.js, MySQL, and JWT for auth
 git clone https://github.com/yourusername/todo-list-api.git
 cd todo-list-api
 ```
+
 ### 2. Install Dependencies
 
 ```bash
@@ -47,6 +45,7 @@ DB_PASSWORD=your_database_password
 DB_NAME=todo_list_db
 JWT_SECRET=your_jwt_secret_key
 ```
+
 ### 4. Set up Database
 
 ```bash
@@ -77,4 +76,74 @@ CREATE TABLE tasks (
 npm start
 ```
 
+## API ENDPOINTS
 
+### Authentication
+
+- POST /api/auth/signup
+- Request Body:
+
+```bash
+{
+  "username": "user1",
+  "email": "user1@example.com",
+  "password": "password123"
+}
+```
+
+- POST /api/auth/login
+- Request Body:
+
+```bash
+{
+  "email": "user1@example.com",
+  "password": "password123"
+}
+```
+
+### Tasks
+
+- **GET `/api/auth/tasks`**
+
+  - Get all tasks for the logged-in user.
+  - **Authorization**: `Bearer <Token>`  
+    _Use a valid Bearer token for authentication._
+
+- **GET `/api/auth/tasks/:id`**
+
+  - Get a specific task by ID.
+  - **Authorization**: `Bearer <Token>`  
+    _Use a valid Bearer token for authentication._
+
+- **POST `/api/auth/tasks`**
+
+  - Get all tasks for logged in user
+  - **Authorization**: `Bearer <Token>`  
+    _Use a valid Bearer token for authentication._
+  - Request Body:
+
+  ```bash
+  {
+    "title": "New Task",
+    "description": "This is a new task",
+    "completed": 0
+  }
+  ```
+- **PUT `/api/auth/tasks/{id}`**
+
+  - Get all tasks for logged in user
+  - **Authorization**: `Bearer <Token>`  
+    _Use a valid Bearer token for authentication._
+  - Request Body:
+
+  ```bash
+  {
+    "title": "New Task update",
+    "description": "This is a new task update",
+    "completed": 1
+  }
+- **DELETE `/api/auth/tasks/{id}`**
+
+  - Get all tasks for logged in user
+  - **Authorization**: `Bearer <Token>`  
+    _Use a valid Bearer token for authentication._
